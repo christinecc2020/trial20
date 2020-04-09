@@ -1,9 +1,635 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
 <head>
-	<title>Hello</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="userscalable=no, width=device-width, initial-scale=1, maximumscale=1">
+	<meta name="HandheldFriendly" content="true">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+<!--[if gte IE 7]><html class="ie8plus" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IEMobile]><html class="ie8plus" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+
+    <title>ALUNBRIG®</title>
+    <style type="text/css">
+
+#i1, #i2, #i3, #i4, #i5{ display: one;}
+
+.container{
+		overflow-y:scroll;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		margin: 0 auto;
+		margin-top: 0px;
+		position: relative;
+		align: center;
+		max-width: 640px;
+		max-height: 1200px;
+		padding-bottom: 100%;
+		user-select: none;
+	}
+
+	.container .slide_img{
+		position: absolute;
+		max-width: 560px;
+		max-height: 1200px;
+	}
+	.container .slide_img img{
+		max-width: 560px;
+		max-height: 1200px;
+	}
+
+	 .prev, .next{
+		width: 0%;
+		height: inherit;
+		position: absolute;
+		top:0; 
+		background-color: rgba(88, 88, 88,.2);
+		color:rgba(244, 244, 244,.9);
+		z-index: 99;
+		transition: .45s;
+		cursor: pointer;
+		text-align: center;
+	}
+
+	.next{right:100px;}
+	.prev{left:70px;}
+
+	label span{
+		position: absolute;
+		font-size: 20pt;
+		top: 0%;
+	 	transform: translateY(-50%);
+	}
+
+	.prev:hover, .next:hover{
+		transition: .3s;
+		background-color: rgba(88, 88, 89,.8);
+		color: #ffffff; 
+	}
+
+
+
+.container #nav_slide{
+	width: 100%;
+	bottom: 12%;
+	height: 11px;
+	position: absolute;
+	text-align: center;
+	z-index: 99;
+	cursor: default;
+}
+
+
+#nav_slide .dots:hover {
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.9);
+	transition: .25s
+}
+
+.slide_img{z-index: -1;}
+
+	#i1:checked ~ #one  ,
+	#i2:checked ~ #two  ,
+	#i3:checked ~ #three,
+	#i4:checked ~ #four ,
+	#i5:checked ~ #five 
+	{z-index: 9; animation: scroll 1s ease-in-out;}
+
+	#i1:checked  ~  #nav_slide #dot1,
+	#i2:checked  ~  #nav_slide #dot2,
+	#i3:checked  ~  #nav_slide #dot3,
+	#i4:checked  ~  #nav_slide #dot4,
+	#i5:checked  ~  #nav_slide #dot5
+	{ background-color: rgba(255,255,255,.9);}
+
+@keyframes scroll{
+	0%{	opacity:.4;}
+	100%{opacity:1;}
+}		
+
+/* .yt{
+	margin: 0 auto;
+	margin-top: 50px;
+	position: relative;
+	width: 150px;
+	height:50px;
+	border: outset #2c2c2c 4px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 30pt;
+	transition: .5s;
+}
+
+.yt a{
+	text-decoration: none;
+	color: #4c4c4c;
+	transition: .5s;
+}
+
+.yt:hover{
+	background: #4c4c4c;
+	transition: .3s;
+}
+
+.yt:hover a{
+	color: #fff;
+	transition: .3s;
+}
+ */
+@media screen and (max-width: 685px){
+	.container{
+		border: none;
+		width: 100%;
+		height: 0;
+		padding-bottom: 55%; 
+	}	
+	
+	label span { font-size: 50pt; }
+	
+	.prev, .next{
+		width: 15%;
+	}	
+	#nav_slide .dots{
+		width: 12px;
+		height: 12px;
+	}
+}
+@media screen  and(min-width: 970px){
+	.me{ display: none;}
+}
+	
+        body{
+          width:100% !important;
+          -webkit-text-size-adjust:none;
+          margin:0;
+          padding:0;
+        }
+        img{
+          display: block;
+          border:0;
+          height:auto;
+          max-width: 100%;
+          line-height:100%;
+          outline:none;
+          text-decoration:none;
+        }
+        table td{
+          border-collapse:collapse;
+        }
+        h1,h2,h3,h4,h5,p,ul,span,sub,sup,ol,li,a{
+          font-family: Arial, sans-serif;
+          margin:0;
+          padding:0;
+          -webkit-font-smoothing:antialiased;
+          -moz-osx-font-smoothing:grayscale;
+          font-size:13px;
+          font-weight:400;
+          font-style: normal;
+          line-height:18px;
+          text-align:left;
+          color:#333333;
+          text-decoration: none;
+        }
+        ul{
+            list-style-type: none!important;
+            margin: 0;
+        }
+        li ul {
+            list-style-type: none!important;   
+            margin: 0;
+        }
+        strong {
+            font-family: inherit;
+            font-weight: inherit;
+            line-height:inherit;
+            margin:0;
+            padding:0;
+            font-weight:500;
+            font-style: normal;
+            color: inherit;
+        }
+        a{
+          font-size:inherit;
+          line-height:inherit;
+          margin:0;
+          padding:0;
+          text-decoration:underline;
+          text-align:left;
+        }
+        sup {
+          font-size: 75%;
+          line-height: 0;
+          position: relative;
+          vertical-align: 5px;
+        }
+        .outer{
+            margin:0 auto;
+            width:100%;
+            max-width:620px;
+        }
+        .footer {
+            font-size: 8pt; 
+            line-height: 10pt;
+        }
+        .footer a, 
+        .footer span {
+            font-size: 8pt; 
+            line-height: 10pt;
+        }
+        span.preheader { display: none !important; }
+        /** This is to overwrite Outlook.com’s Embedded CSS ************/
+        table {
+            border-collapse:separate;
+        }
+        a, 
+        a:link, 
+        a:visited {
+            text-decoration: none; 
+            color: #323232; 
+        } 
+        a:hover {text-decoration: underline;}
+        h2,h2 a,h2 a:visited,h3,h3 a,h3 a:visited,h4,h5,h6,.t_cht {color:#000 !important}
+        .ExternalClass p, 
+        .ExternalClass span, 
+        .ExternalClass font, 
+        .ExternalClass td {line-height: 100%}
+        
+        /** This is to center your email in Outlook.com ************/
+        .ExternalClass {width: 100%;}
+        /**************/ 
+
+        /* target ipads and iphones blue linked addresses and dates */  
+        a[x-apple-data-detectors]{ 
+            color:inherit !important;
+            font-size:inherit !important;
+            font-family:inherit !important;
+            font-weight:inherit !important;
+            line-height:inherit !important;
+            text-decoration:none !important;
+        }
+        
+        /* Double Wide v3 Pattern CSS */
+        @media only screen and (max-width: 620px) {
+            *[class="hide"] {
+                max-height:0; /* Gmail*/
+                display:none; /* Generic*/
+                mso-hide:all; /* Outlook clients*/
+                overflow:hidden; /* Generic */
+            }
+            td[class="spacer"] { 
+                max-height:0; /* Gmail*/
+                display:none; /* Generic*/
+                mso-hide:all; /* Outlook clients*/
+                overflow:hidden; /* Generic */
+            }
+            
+            td.grid-block,
+            td[class="grid-block"] {
+                display: block;
+                float: left;
+                height: auto;
+                margin-bottom: 8px;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                width: 100%;
+            }
+
+    </style>
 </head>
-<body>
-<h1>yoyo! It is a good course</h1>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="#ebecec" style="-webkit-text-size-adjust: none; background-color: #ebecec; margin: 0; padding: 0; width: 100% !important;">
+    <center>
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable" bgcolor="#ebecec" style="border-collapse: separate;">
+            <tr>
+                <td height="20" style="border-collapse: collapse; font-size: 20px; line-height: 20px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse;">  
+                    <!--[if (gte mso 9)|(IE)]>
+                    <table width="620" align="center" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                    <td>
+                    <![endif]-->
+                    <table class="outer" align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; margin: 0 auto; max-width: 620px; width: 100%;">
+                        <tr>
+                            <td style="border-collapse: collapse;">
+                            	<!-- Preheader  -->
+                            	<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; max-width: 620px; padding-bottom: 10px; padding-left: 20px; padding-right: 20px;">
+                            		<tr>
+                            			<td width="50%" align="left" valign="middle" style="border-collapse: collapse;">
+                            				<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
+                            					<tr>
+                            						<td valign="middle" align="left" style="border-collapse: collapse;">
+                            							<!--p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 18px; margin: 0; padding: 0; text-align: left; text-decoration: none;"><span class="template" data-template="$(title)" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 18px; margin: 0; padding: 0; text-align: left; text-decoration: none;">%title%</span></p-->
+                            						</td>
+                            					</tr>
+                            				</table>
+                            			</td>
+                            			<td width="50%" align="right" valign="middle" style="border-collapse: collapse;">
+                        					<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
+                        						<tr>
+                            						<td valign="middle" align="right" style="border-collapse: collapse;">
+                            							<table width="140" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                            								<tr>
+                            									<td valign="middle" style="border-collapse: collapse;">
+                            										<!--p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 12px; margin: 0; padding: 0; text-align: left; text-decoration: none;">
+                            											Email not displaying correctly?<br>
+                                                                        <a href="_" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #e31b22; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: underline;">View in browser.</a>
+                            										</p-->		
+                            									</td>
+                            								</tr>
+                            							</table>
+                            						</td>
+                            					</tr>
+                        					</table>
+                            			</td>
+                            		</tr>
+                            	</table>
+
+                 <table width="100%" cellpadding="0" cellspacing="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 0px;" >
+                            <tr>
+                              <td class="preheader" style="font-family: 'Arial Narrow', Arial, Helvetica, sans-serif; font-size:10px; line-height:15px; color:#052afa; text-align:center; valign="middle">       
+                 <div align="center" style="text-align: center;"><a href="https://www.convergenceconcepts.com.sg" target="_blank";  style="color:#052afa"; style="font-size:10px";><u>View Web Version for Best Experience</u></a></div>                           	
+                              </td>
+                            </tr>
+                          </table>
+<!-- Heading -->
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
+                                    <tr>
+                                    	<td style="border-collapse: collapse;">
+                                    		<div align="center" style="text-align: center;">
+                                        		<a <!--href="http://insert_url_here/" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #323232; font-family: Arial, sans-serif; font-size: inherit; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: none;"--><img src="Top Landscape.jpg" width="660" height="411" alt="CIC" border="0" class="full-width img620x323" style="border: 0; display: block; height: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 100%;"></a>
+                                        	</div>	
+                                    	</td>
+                                    </tr>
+                                </table>
+
+
+                                <!-- Email Body -->
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-left: 20px; padding-right: 20px;">
+                                    <tr>
+                                        <td align="center" style="border-collapse: collapse;">
+                                            <!--[if (gte mso 9)|(IE)]>
+                                            <table width="392" align="center" cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                            <td>
+                                            <![endif]-->
+                                           
+
+
+
+
+			       <!-- Body copy -->
+			       <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
+			       <tr>
+			       <td valign="top" style="border-collapse: collapse;">
+			       <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">Dear <span style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin: 0; padding: 0; text-align: left; text-decoration: none;">Colleague from Covergence Concepts</span>,
+			                            								<br>
+			                            								<br>
+				I hope everyone is doing well in this Circuit Breaker Period. Let's do our best and help Convergence Concepts to emerge as a brand new agency by the end of this Covid-19.
+						</p>
+			                     </td>
+			               </tr>
+			       </table>
+<br>
+<br>
+<br>
+
+                            	<!-- Heading -->
+<div class="container">
+	
+	<input type="radio" id="i1" name="images" checked />
+	<input type="radio" id="i2" name="images" />
+	<input type="radio" id="i3" name="images" />	
+	
+	<div class="slide_img" id="one">			
+			
+			<img src="Landscape.jpeg" width="620" height="304">
+			
+				<label class="prev" for="i3"><span>&#x2039;</span></label>
+				<label class="next" for="i2"><span>&#x203a;</span></label>	
+       <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="30" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>                                
+
+
+                            <!-- Body copy -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
+                                                            <tr>
+                                                                <td valign="top" style="border-collapse: collapse;">
+                                                                    <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">
+                                                                        {{customText[I hope the information provided here is helpful to you.    Should you have any questions on the clinical data supporting ALUNBRIG or on how it may be used in ALK+ NSCLC patients, then please do not hesitate to get in touch and I will be happy to discuss with you in further detail.|I trust that the information given answers your questions on this topic, but if there is anything more that I can clarify or add to the topic, I will be more than happy to arrange a face to face meeting or a call to discuss further with you.|I hope this has provided you with some useful insight into the data supporting ALUNBRIG® use in ALK+ NSCLC patients and how it should be used in clinical practice. If you do not have any more questions on the subject, please just let me know when is convenient for you and I will be happy to arrange another meeting.]}}
+                                                        <br>
+                                                        <br>
+                                                                Best Regards, {{userName}}
+                                                
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+
+                                                        <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+
+
+                                                        <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+                            
+                    <!-- Heading -->
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
+                                    <tr>
+                                        <td style="border-collapse: collapse;">
+                                            <div align="center" style="text-align: center;">
+                                                <a <!--href="http://insert_url_here/" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #323232; font-family: Arial, sans-serif; font-size: inherit; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: none;"--><img src="Dosage & Admin Part 3.jpg" width="620" height="209" alt="CIC" border="0" class="full-width img620x323" style="border: 0; display: block; height: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 100%;"></a>
+                                            </div>  
+                                        </td>
+                                    </tr>
+                                </table>
+		
+	</div>
+	
+	<div class="slide_img" id="two">
+		
+			<img src="Landscape1.jpg" width="620" height="631" >
+			
+				<label class="prev" for="i1"><span>&#x2039;</span></label>
+				<label class="next" for="i3"><span>&#x203a;</span></label>
+       <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="30" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>                                
+
+
+                            <!-- Body copy -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
+                                                            <tr>
+                                                                <td valign="top" style="border-collapse: collapse;">
+                                                                    <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">
+                                                                        {{customText[I hope the information provided here is helpful to you.    Should you have any questions on the clinical data supporting ALUNBRIG or on how it may be used in ALK+ NSCLC patients, then please do not hesitate to get in touch and I will be happy to discuss with you in further detail.|I trust that the information given answers your questions on this topic, but if there is anything more that I can clarify or add to the topic, I will be more than happy to arrange a face to face meeting or a call to discuss further with you.|I hope this has provided you with some useful insight into the data supporting ALUNBRIG® use in ALK+ NSCLC patients and how it should be used in clinical practice. If you do not have any more questions on the subject, please just let me know when is convenient for you and I will be happy to arrange another meeting.]}}
+                                                        <br>
+                                                        <br>
+                                                                Best Regards, {{userName}}
+                                                
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+
+                                                        <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+
+
+                                                        <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+                            
+                    <!-- Heading -->
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
+                                    <tr>
+                                        <td style="border-collapse: collapse;">
+                                            <div align="center" style="text-align: center;">
+                                                <a <!--href="http://insert_url_here/" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #323232; font-family: Arial, sans-serif; font-size: inherit; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: none;"--><img src="Dosage & Admin Part 3.jpg" width="620" height="209" alt="CIC" border="0" class="full-width img620x323" style="border: 0; display: block; height: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 100%;"></a>
+                                            </div>  
+                                        </td>
+                                    </tr>
+                                </table>
+	</div>
+			
+	<div class="slide_img" id="three">
+			<img src="Landscape2.jpg" width="620" height="1196">	
+			
+				<label class="prev" for="i2"><span>&#x2039;</span></label>
+				<label class="next" for="i1"><span>&#x203a;</span></label>
+       <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="30" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>                                
+
+
+                            <!-- Body copy -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
+                                                            <tr>
+                                                                <td valign="top" style="border-collapse: collapse;">
+                                                                    <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">
+                                                                    I hope the photo of the landscapes are enough to prepare you for another day.
+                                                        <br>
+                                                        <br>
+                                                                Best Regards, Chris.
+                                                
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+
+                                                        <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+
+
+                                                        <!-- Spacer -->
+                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+                            
+                    <!-- Heading -->
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
+                                    <tr>
+                                        <td style="border-collapse: collapse;">
+                                            <div align="center" style="text-align: center;">
+                                                <a <!--href="http://insert_url_here/" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #323232; font-family: Arial, sans-serif; font-size: inherit; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: none;"--><img src="Dosage & Admin Part 3.jpg" width="620" height="209" alt="CIC" border="0" class="full-width img620x323" style="border: 0; display: block; height: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 100%;"></a>
+                                            </div>  
+                                        </td>
+                                    </tr>
+                                </table>
+	</div>
+
+	<div id="nav_slide">
+		<label for="i1" class="dots" id="dot1"></label>
+		<label for="i2" class="dots" id="dot2"></label>
+		<label for="i3" class="dots" id="dot3"></label>
+	</div>
+
+ 
+		
+</div>
+													
+								
+							
+														
+
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!--[if (gte mso 9)|(IE)]>
+                                            </td>
+                                            </tr>
+                                            </table>
+                                            <![endif]-->
+                                        </td>
+                                    </tr>
+                                </table>
+
+                               
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                </td>
+            </tr>
+            <tr>
+              
+
+                                           
+                                        </td>
+                                    </tr>
+                                </table>   
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]--> 
+                </td>
+            </tr>
+        </table>
+        
+    </center>
 </body>
 </html>
