@@ -12,15 +12,6 @@
 
     <title>CONVERGENCE CONCEPTS</title>
 
-
-
-
-
-
-
-
-
-
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script src="Positive EDM.js"></script>
 <script>
@@ -66,111 +57,7 @@ function handleComplete(evt,comp) {
 }
 </script>
 
-
-
-
-
-
-
-
-
-
-
     <style type="text/css">
-
-#i1, #i2, #i3, #i4, #i5{ display: one;}
-
-.container{
-		overflow-y:scroll;
-		-ms-overflow-style: -ms-autohiding-scrollbar;
-		margin: 0 auto;
-		margin-top: 0px;
-		position: relative;
-		align: center;
-		max-width: 640px;
-		max-height: 1200px;
-		padding-bottom: 100%;
-		user-select: none;
-	}
-
-	.container .slide_img{
-		position: absolute;
-		max-width: 560px;
-		max-height: 1200px;
-	}
-	.container .slide_img img{
-		max-width: 560px;
-		max-height: 1200px;
-	}
-
-	 .prev, .next{
-		width: 0%;
-		height: inherit;
-		position: absolute;
-		top:0; 
-		background-color: rgba(88, 88, 88,.2);
-		color:rgba(244, 244, 244,.9);
-		z-index: 99;
-		transition: .45s;
-		cursor: pointer;
-		text-align: center;
-	}
-
-	.next{right:100px;}
-	.prev{left:70px;}
-
-	label span{
-		position: absolute;
-		font-size: 20pt;
-		top: 0%;
-	 	transform: translateY(-50%);
-	}
-
-	.prev:hover, .next:hover{
-		transition: .3s;
-		background-color: rgba(88, 88, 89,.8);
-		color: #ffffff; 
-	}
-
-
-
-.container #nav_slide{
-	width: 100%;
-	bottom: 12%;
-	height: 11px;
-	position: absolute;
-	text-align: center;
-	z-index: 99;
-	cursor: default;
-}
-
-
-#nav_slide .dots:hover {
-	cursor: pointer;
-	background-color: rgba(255, 255, 255, 0.9);
-	transition: .25s
-}
-
-.slide_img{z-index: -1;}
-
-	#i1:checked ~ #one  ,
-	#i2:checked ~ #two  ,
-	#i3:checked ~ #three,
-	#i4:checked ~ #four ,
-	#i5:checked ~ #five 
-	{z-index: 9; animation: scroll 1s ease-in-out;}
-
-	#i1:checked  ~  #nav_slide #dot1,
-	#i2:checked  ~  #nav_slide #dot2,
-	#i3:checked  ~  #nav_slide #dot3,
-	#i4:checked  ~  #nav_slide #dot4,
-	#i5:checked  ~  #nav_slide #dot5
-	{ background-color: rgba(255,255,255,.9);}
-
-@keyframes scroll{
-	0%{	opacity:.4;}
-	100%{opacity:1;}
-}		
 
 /* .yt{
 	margin: 0 auto;
@@ -364,7 +251,7 @@ function handleComplete(evt,comp) {
 </head>
 <body onload="init();" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="#ebecec" style="-webkit-text-size-adjust: none; background-color: #ebecec; margin: 0; padding: 0; width: 100% !important;">
     <center>
-        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable" bgcolor="#ebecec" style="border-collapse: separate;">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" max-width="1000px" id="backgroundTable" bgcolor="#ebecec" style="border-collapse: separate;">
             <tr>
                 <td height="20" style="border-collapse: collapse; font-size: 20px; line-height: 20px;">&nbsp;</td>
             </tr>
@@ -411,7 +298,7 @@ function handleComplete(evt,comp) {
                             		</tr>
                             	</table>
 
-                 <table width="100%" cellpadding="0" cellspacing="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 0px;" >
+                 <table width="100%" cellpadding="0" cellspacing="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 1000px; padding-bottom: 0px;" >
                             <tr>
                               <td class="preheader" style="font-family: 'Arial Narrow', Arial, Helvetica, sans-serif; font-size:10px; line-height:15px; color:#052afa; text-align:center; valign="middle">       
                  <div align="center" style="text-align: center;"><a href="https://christinecc2020.github.io/trial20/" target="_blank";  style="color:#052afa"; style="font-size:10px";><u>View Web Version for Best Experience</u></a></div>                           	
@@ -432,7 +319,7 @@ function handleComplete(evt,comp) {
 
 
                                 <!-- Email Body -->
-                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-left: 20px; padding-right: 20px;">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 1000px; padding-left: 20px; padding-right: 20px;">
                                     <tr>
                                         <td align="center" style="border-collapse: collapse;">
                                             <!--[if (gte mso 9)|(IE)]>
@@ -446,7 +333,7 @@ function handleComplete(evt,comp) {
 
 
 			       <!-- Body copy -->
-			       <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
+			       <table max-width="1000" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
 			       <tr>
 			       <td valign="top" style="border-collapse: collapse;">
 			       <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">Dear <span style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin: 0; padding: 0; text-align: left; text-decoration: none;">Colleagues from Convergence Concepts</span>,
@@ -461,203 +348,6 @@ function handleComplete(evt,comp) {
 <br>
 <br>
 
-                            	<!-- Heading -->
-<div class="container">
-	
-	<input type="radio" id="i1" name="images" checked />
-	<input type="radio" id="i2" name="images" />
-	<input type="radio" id="i3" name="images" />	
-	
-	<div class="slide_img" id="one">			
-			<label class="prev" for="i3"><span>&#x2039;</span></label>
-                <label class="next" for="i2"><span>&#x203a;</span></label>  
-                <br>
-            <img src="https://raw.githubusercontent.com/christinecc2020/trial20/gh-pages/image/Landscape1.jpg" width="620" height="304">
-			
-       <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="30" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>                                
-
-
-                            <!-- Body copy -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
-                                                            <tr>
-                                                                <td valign="top" style="border-collapse: collapse;">
-                                                                    <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">
-                                                                    I hope the photo of the landscapes are enough to prepare you for another day. Have a good weekend!
-                                                        <br>
-                                                        <br>
-                                                                Best Regards, Chris.
-                                                
-                                                                    </p>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-                            
-                    <!-- Heading -->
-                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
-                                    <tr>
-                                        <td style="border-collapse: collapse;">
-                                            <div align="center" style="text-align: center;">
-                                                <a <!--href="http://insert_url_here/" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #323232; font-family: Arial, sans-serif; font-size: inherit; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: none;"--><img src="https://raw.githubusercontent.com/christinecc2020/trial20/gh-pages/image/Bottom.jpg" width="620" height="209" alt="CIC" border="0" class="full-width img620x323" style="border: 0; display: block; height: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 100%;"></a>
-                                            </div>  
-                                        </td>
-                                    </tr>
-                                </table>
-		
-	</div>
-	
-	<div class="slide_img" id="two">
-		              <label class="prev" for="i1"><span>&#x2039;</span></label>
-                <label class="next" for="i3"><span>&#x203a;</span></label>
-                <br>
-			<img src="https://raw.githubusercontent.com/christinecc2020/trial20/gh-pages/image/Landscape2.jpg" width="620" height="631" >
-			
-       <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="30" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>                                
-
-
-                            <!-- Body copy -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
-                                                            <tr>
-                                                                <td valign="top" style="border-collapse: collapse;">
-                                                                    <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">
-                                                                      I hope the photo of the landscapes are enough to prepare you for another day. Have a good weekend!
-                                                        <br>
-                                                        <br>
-                                                                Best Regards, Chris.
-                                                
-                                                                    </p>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-                            
-                    <!-- Heading -->
-                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
-                                    <tr>
-                                        <td style="border-collapse: collapse;">
-                                            <div align="center" style="text-align: center;">
-                                                <a <!--href="http://insert_url_here/" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #323232; font-family: Arial, sans-serif; font-size: inherit; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: none;"--><img src="https://raw.githubusercontent.com/christinecc2020/trial20/gh-pages/image/Bottom.jpg" width="620" height="209" alt="CIC" border="0" class="full-width img620x323" style="border: 0; display: block; height: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 100%;"></a>
-                                            </div>  
-                                        </td>
-                                    </tr>
-                                </table>
-	</div>
-			
-	<div class="slide_img" id="three">
-                        <label class="prev" for="i2"><span>&#x2039;</span></label>
-                <label class="next" for="i1"><span>&#x203a;</span></label>
-                <br>
-			<img src="https://raw.githubusercontent.com/christinecc2020/trial20/gh-pages/image/Landscape3.jpg" width="620" height="1196">	
-			
-       <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="30" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>                                
-
-
-                            <!-- Body copy -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
-                                                            <tr>
-                                                                <td valign="top" style="border-collapse: collapse;">
-                                                                    <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">
-                                                                    I hope the photo of the landscapes are enough to prepare you for another day. Have a good weekend!
-                                                        <br>
-                                                        <br>
-                                                                Best Regards, Chris.
-                                                
-                                                                    </p>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Spacer -->
-                                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                                                            <tr>
-                                                                <td height="10" style="border-collapse: collapse; font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-                            
-                    <!-- Heading -->
-                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
-                                    <tr>
-                                        <td style="border-collapse: collapse;">
-                                            <div align="center" style="text-align: center;">
-                                                <a <!--href="http://insert_url_here/" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #323232; font-family: Arial, sans-serif; font-size: inherit; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: none;"--><img src="https://raw.githubusercontent.com/christinecc2020/trial20/gh-pages/image/Bottom.jpg" width="620" height="209" alt="CIC" border="0" class="full-width img620x323" style="border: 0; display: block; height: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 100%;"></a>
-                                            </div>  
-                                        </td>
-                                    </tr>
-                                </table>
-	</div>
-
-	<div id="nav_slide">
-		<label for="i1" class="dots" id="dot1"></label>
-		<label for="i2" class="dots" id="dot2"></label>
-		<label for="i3" class="dots" id="dot3"></label>
-	</div>
-
- 
-		
-</div>
-													
-								
-							
-														
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
                                             <!--[if (gte mso 9)|(IE)]>
                                             </td>
                                             </tr>
