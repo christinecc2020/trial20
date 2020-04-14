@@ -803,6 +803,17 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{sha
 		_this.gotoAndPlay('toppings_mov');
 		});
 		this.stop()
+		var _this = this;
+		/*
+		Clicking on the specified symbol instance executes a function.
+		*/
+		_this.mix_btn.on('click', function(){
+		/*
+		Moves the playhead to the specified frame label in the timeline and continues playback from that frame.
+		Can be used on the main timeline or on movie clip timelines.
+		*/
+		_this.gotoAndPlay('shaker_mov');
+		});
 		this.stop()
 		this.stop()
 		this.stop()
@@ -853,7 +864,6 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{sha
 		this.stop()
 		this.stop()
 		this.stop()
-		this.stop()
 	}
 	this.frame_345 = function() {
 		var _this = this;
@@ -869,7 +879,6 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{sha
 		});
 	}
 	this.frame_349 = function() {
-		this.stop()
 		this.stop()
 		this.stop()
 		this.stop()
@@ -941,25 +950,27 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{sha
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_8).wait(7).to({_off:true},1).wait(130).to({_off:false},0).to({_off:true},10).wait(654));
 
-	// text
+	// texts_and_buttons
 	this.instance_9 = new lib.companylogo();
 	this.instance_9.setTransform(933,33,0.2123,0.2123);
 
-	this.instance_10 = new lib._03_toppings();
-	this.instance_10.setTransform(735,555,0.7692,0.7695);
+	this.instance_10 = new lib._04_mix();
+	this.instance_10.setTransform(472,270,0.7619,0.7617);
 
-	this.instance_11 = new lib._02_condiments();
-	this.instance_11.setTransform(205,620,0.7692,0.7691);
+	this.instance_11 = new lib._03_toppings();
+	this.instance_11.setTransform(775,555,0.7692,0.7695);
 
-	this.instance_12 = new lib._01_liquid();
-	this.instance_12.setTransform(120,328,0.7619,0.7617);
+	this.instance_12 = new lib._02_condiments();
+	this.instance_12.setTransform(205,620,0.7692,0.7691);
 
-	this.instance_13 = new lib._04_mix();
-	this.instance_13.setTransform(472,270,0.7619,0.7617);
+	this.instance_13 = new lib._01_liquid();
+	this.instance_13.setTransform(120,328,0.7619,0.7617);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_12},{t:this.instance_11},{t:this.instance_10,p:{x:735}},{t:this.instance_9}]}).to({state:[{t:this.instance_12},{t:this.instance_11},{t:this.instance_10,p:{x:775}},{t:this.instance_13},{t:this.instance_9}]},138).to({state:[]},10).wait(654));
+	this.mix_btn = new lib.mix();
+	this.mix_btn.name = "mix_btn";
+	this.mix_btn.setTransform(510.3,358.5,1,1,0,0,0,110,35.3);
+	new cjs.ButtonHelper(this.mix_btn, 0, 1, 2);
 
-	// buttons
 	this.toppings_btn = new lib.toppings();
 	this.toppings_btn.name = "toppings_btn";
 	this.toppings_btn.setTransform(775,645.65,1,1,0,0,0,110,35.3);
@@ -975,12 +986,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{sha
 	this.liquid_btn.setTransform(144,415.8,1,1,0,0,0,110,35.8);
 	new cjs.ButtonHelper(this.liquid_btn, 0, 1, 2);
 
-	this.mix_btn = new lib.mix();
-	this.mix_btn.name = "mix_btn";
-	this.mix_btn.setTransform(510.3,358.5,1,1,0,0,0,110,35.3);
-	new cjs.ButtonHelper(this.mix_btn, 0, 1, 2);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.liquid_btn},{t:this.condiments_btn},{t:this.toppings_btn}]}).to({state:[{t:this.liquid_btn},{t:this.condiments_btn},{t:this.toppings_btn},{t:this.mix_btn}]},138).to({state:[]},10).wait(654));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.liquid_btn},{t:this.condiments_btn},{t:this.toppings_btn},{t:this.mix_btn},{t:this.instance_13},{t:this.instance_12},{t:this.instance_11},{t:this.instance_10},{t:this.instance_9}]}).to({state:[{t:this.liquid_btn},{t:this.condiments_btn},{t:this.toppings_btn},{t:this.mix_btn},{t:this.instance_13},{t:this.instance_12},{t:this.instance_11},{t:this.instance_10},{t:this.instance_9}]},138).to({state:[]},10).wait(654));
 
 	// condiments
 	this.instance_14 = new lib.mint_leaf1();
