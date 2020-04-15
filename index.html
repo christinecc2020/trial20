@@ -6,7 +6,7 @@
 // Memory Game
 function memoryFlipTile(tile,val){
     if(tile.innerHTML == '' && memory_values.length < 2){
-        tile.style.background = "#FFF";
+        tile.style.background = "#ffffff";
         tile.innerHTML = "<img src='image/" + val +  ".png'>";
         if(memory_values.length == 0){
             memory_values.push(val);
