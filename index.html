@@ -6,7 +6,7 @@
 // Memory Game
 function memoryFlipTile(tile,val){
     if(tile.innerHTML == '' && memory_values.length < 2){
-        tile.style.background = "";
+        tile.style.background = "#FFF";
         tile.innerHTML = "<img src='image/" + val +  ".png'>";
         if(memory_values.length == 0){
             memory_values.push(val);
@@ -26,7 +26,7 @@ function memoryFlipTile(tile,val){
                     newBoard();
                 }
             } else {
-                
+
 var memory_array = ['A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H','I','I','J','J','K','K','L','L'];
 var memory_values = [];
 var memory_tile_ids = [];
