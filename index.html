@@ -1,115 +1,125 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="userscalable=no, width=device-width, initial-scale=1, maximumscale=1">
-	<meta name="HandheldFriendly" content="true">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="format-detection" content="telephone=no">
-<!--[if gte IE 7]><html class="ie8plus" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
-<!--[if IEMobile]><html class="ie8plus" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 
-    <title>CONVERGENCE CONCEPTS</title>
-
-<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script src="Positive EDM.js"></script>
 <script>
-var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-function init() {
-    canvas = document.getElementById("canvas");
-    anim_container = document.getElementById("animation_container");
-    dom_overlay_container = document.getElementById("dom_overlay_container");
-    var comp=AdobeAn.getComposition("67A9012B14E7254F81C4068BCE40F2CB");
-    var lib=comp.getLibrary();
-    var loader = new createjs.LoadQueue(false);
-    loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
-    loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-    var lib=comp.getLibrary();
-    loader.loadManifest(lib.properties.manifest);
-}
-function handleFileLoad(evt, comp) {
-    var images=comp.getImages();    
-    if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }    
-}
-function handleComplete(evt,comp) {
-    //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-    var lib=comp.getLibrary();
-    var ss=comp.getSpriteSheet();
-    var queue = evt.target;
-    var ssMetadata = lib.ssMetadata;
-    for(i=0; i<ssMetadata.length; i++) {
-        ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+// Memory Game
+var memory_array = ['A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H','I','I','J','J','K','K','L','L'];
+var memory_values = [];
+var memory_tile_ids = [];
+var tiles_flipped = 0;
+Array.prototype.memory_tile_shuffle = function(){
+    var i = this.length, j, temp;
+    while(--i > 0){
+        j = Math.floor(Math.random() * (i+1));
+        temp = this[j];
+        this[j] = this[i];
+        this[i] = temp;
     }
-    exportRoot = new lib.PositiveEDM();
-    stage = new lib.Stage(canvas);
-    stage.enableMouseOver();    
-    //Registers the "tick" event listener.
-    fnStartAnimation = function() {
-        stage.addChild(exportRoot);
-        createjs.Ticker.framerate = lib.properties.fps;
-        createjs.Ticker.addEventListener("tick", stage);
-    }       
-    //Code to support hidpi screens and responsive scaling.
-    AdobeAn.makeResponsive(true,'both',true,1,[canvas,anim_container,dom_overlay_container]);   
-    AdobeAn.compositionLoaded(lib.properties.id);
-    fnStartAnimation();
 }
+function newBoard(){
+    tiles_flipped = 0;
+    var output = '';
+    memory_array.memory_tile_shuffle();
+    for(var i = 0; i < memory_array.length; i++){
+        output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_array[i]+'\')"></div>';
+    }
+    document.getElementById('memory_board').innerHTML = output;
+}
+function memoryFlipTile(tile,val){
+    if(tile.innerHTML == '' && memory_values.length < 2){
+        tile.style.background = "";
+        tile.innerHTML = "<img src='file://C:/Users/Christine/Desktop/Memory%20Game" + val +  ".png'>";
+        if(memory_values.length == 0){
+            memory_values.push(val);
+            memory_tile_ids.push(tile.id);
+        } else if(memory_values.length == 1){
+            memory_values.push(val);
+            memory_tile_ids.push(tile.id);
+            if(memory_values[0] == memory_values[1]){
+                tiles_flipped += 2;
+                // Clear both arrays
+                memory_values = [];
+                memory_tile_ids = [];
+                // Check to see if the whole board is cleared
+                if(tiles_flipped == memory_array.length){
+                    alert("Congratulations, you had just uncover the secret to Convergence Concepts.");
+                    document.getElementById('memory_board').innerHTML = "";
+                    newBoard();
+                }
+            } else {
+                function flip2Back(){
+                    // Flip the 2 tiles back over
+                    var tile_1 = document.getElementById(memory_tile_ids[0]);
+                    var tile_2 = document.getElementById(memory_tile_ids[1]);
+                    tile_1.style.background = 'url(https://images.all-free-download.com/images/graphiclarge/orange_rang_small_icon_vector_280741.jpg';
+                    tile_1.innerHTML = "";
+                    tile_2.style.background = 'url(https://images.all-free-download.com/images/graphiclarge/orange_rang_small_icon_vector_280741.jpg) no-repeat';
+                    tile_2.innerHTML = "";
+                    // Clear both arrays
+                    memory_values = [];
+                    memory_tile_ids = [];
+                }
+                setTimeout(flip2Back, 700);
+            }
+        }
+    }
+}
+
 </script>
 
-    <style type="text/css">
+<style type="text/css">
+    /*----------------------------------  
+Header
+------------------------------------*/
 
-/* .yt{
-	margin: 0 auto;
-	margin-top: 50px;
-	position: relative;
-	width: 150px;
-	height:50px;
-	border: outset #2c2c2c 4px;
-	border-radius: 10px;
-	text-align: center;
-	font-size: 30pt;
-	transition: .5s;
+h1 {
+    font-size: 3em;
+    font-weight: 200;
+    text-align: center;
 }
 
-.yt a{
-	text-decoration: none;
-	color: #4c4c4c;
-	transition: .5s;
+h2 {
+    font-size: 2.5em;
+    font-weight: 400;
+    text-align: center;
 }
 
-.yt:hover{
-	background: #4c4c4c;
-	transition: .3s;
+p {
+    font-size: 1.6em;
 }
 
-.yt:hover a{
-	color: #fff;
-	transition: .3s;
+h3 {
+    font-weight: 400;
 }
- */
-@media screen and (max-width: 685px){
-	.container{
-		border: none;
-		width: 100%;
-		height: 0;
-		padding-bottom: 55%; 
-	}	
-	
-	label span { font-size: 50pt; }
-	
-	.prev, .next{
-		width: 15%;
-	}	
-	#nav_slide .dots{
-		width: 12px;
-		height: 12px;
-	}
+
+div#memory_board{
+    background:url(https://img.jakpost.net/c/2020/03/14/2020_03_14_89218_1584158212._large.jpg) no-repeat;
+    border:#999 0px solid;
+    width:966px;
+    height:644px;
+    padding:0px;
+    margin:0px auto;
+}
+div#memory_board > div{
+    background: url(https://img.icons8.com/pastel-glyph/2x/home.png) no-repeat;
+    border:#000 0px solid;
+    width:161px;
+    height:161px;
+    float:left;
+    margin:0px;
+    padding:0px;
+    font-size:30px;
+    cursor:pointer;
+    text-align: center;
+}
+
+@media screen and (max-width: 970px){
 }
 @media screen  and(min-width: 970px){
-	.me{ display: none;}
+    .me{ display: none;}
 }
-	
+    
         body{
           width:100% !important;
           -webkit-text-size-adjust:none;
@@ -128,20 +138,7 @@ function handleComplete(evt,comp) {
         table td{
           border-collapse:collapse;
         }
-        h1,h2,h3,h4,h5,p,ul,span,sub,sup,ol,li,a{
-          font-family: Arial, sans-serif;
-          margin:0;
-          padding:0;
-          -webkit-font-smoothing:antialiased;
-          -moz-osx-font-smoothing:grayscale;
-          font-size:13px;
-          font-weight:400;
-          font-style: normal;
-          line-height:18px;
-          text-align:left;
-          color:#333333;
-          text-decoration: none;
-        }
+
         ul{
             list-style-type: none!important;
             margin: 0;
@@ -177,7 +174,7 @@ function handleComplete(evt,comp) {
         .outer{
             margin:0 auto;
             width:100%;
-            max-width:620px;
+            max-width:970px;
         }
         .footer {
             font-size: 8pt; 
@@ -221,7 +218,7 @@ function handleComplete(evt,comp) {
         }
         
         /* Double Wide v3 Pattern CSS */
-        @media only screen and (max-width: 620px) {
+        @media only screen and (max-width: 970px) {
             *[class="hide"] {
                 max-height:0; /* Gmail*/
                 display:none; /* Generic*/
@@ -248,8 +245,10 @@ function handleComplete(evt,comp) {
             }
 
     </style>
+
+
 </head>
-<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="#ebecec" style="-webkit-text-size-adjust: none; background-color: #ebecec; margin: 0; padding: 0; width: 100% !important;">
+<body onload="init();" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="#ebecec" style="-webkit-text-size-adjust: none; background-color: #ebecec; margin: 0; padding: 0; width: 100% !important;">
     <center>
         <table border="0" cellpadding="0" cellspacing="0" height="100%" max-width="1000px" id="backgroundTable" bgcolor="#ebecec" style="border-collapse: separate;">
             <tr>
@@ -257,140 +256,65 @@ function handleComplete(evt,comp) {
             </tr>
             <tr>
                 <td align="center" valign="top" style="border-collapse: collapse;">  
-                    <!--[if (gte mso 9)|(IE)]>
-                    <table width="620" align="center" cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                    <td>
-                    <![endif]-->
-                    <table class="outer" align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; margin: 0 auto; max-width: 620px; width: 100%;">
+
+                    <table class="outer" align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; margin: 0 auto; max-width: 970px; width: 100%;">
                         <tr>
                             <td style="border-collapse: collapse;">
-                            	<!-- Preheader  -->
-                            	<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; max-width: 620px; padding-bottom: 10px; padding-left: 20px; padding-right: 20px;">
-                            		<tr>
-                            			<td width="50%" align="left" valign="middle" style="border-collapse: collapse;">
-                            				<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
-                            					<tr>
-                            						<td valign="middle" align="left" style="border-collapse: collapse;">
-                            							<!--p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 18px; margin: 0; padding: 0; text-align: left; text-decoration: none;"><span class="template" data-template="$(title)" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 18px; margin: 0; padding: 0; text-align: left; text-decoration: none;">%title%</span></p-->
-                            						</td>
-                            					</tr>
-                            				</table>
-                            			</td>
-                            			<td width="50%" align="right" valign="middle" style="border-collapse: collapse;">
-                        					<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
-                        						<tr>
-                            						<td valign="middle" align="right" style="border-collapse: collapse;">
-                            							<table width="140" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
-                            								<tr>
-                            									<td valign="middle" style="border-collapse: collapse;">
-                            										<!--p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 12px; margin: 0; padding: 0; text-align: left; text-decoration: none;">
-                            											Email not displaying correctly?<br>
+                                <!-- Preheader  -->
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; max-width: 970px; padding-bottom: 10px; padding-left: 20px; padding-right: 20px;">
+                                    <tr>
+                                        <td width="50%" align="left" valign="middle" style="border-collapse: collapse;">
+                                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
+                                                <tr>
+                                                    <td valign="middle" align="left" style="border-collapse: collapse;">
+                                                        <!--p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 18px; margin: 0; padding: 0; text-align: left; text-decoration: none;"><span class="template" data-template="$(title)" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 18px; margin: 0; padding: 0; text-align: left; text-decoration: none;">%title%</span></p-->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="50%" align="right" valign="middle" style="border-collapse: collapse;">
+                                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">              
+                                                <tr>
+                                                    <td valign="middle" align="right" style="border-collapse: collapse;">
+                                                        <table width="140" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">
+                                                            <tr>
+                                                                <td valign="middle" style="border-collapse: collapse;">
+                                                                    <!--p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: 12px; margin: 0; padding: 0; text-align: left; text-decoration: none;">
+                                                                        Email not displaying correctly?<br>
                                                                         <a href="_" target="_blank" openInSafari="true" style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #e31b22; font-family: Arial, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; line-height: inherit; margin: 0; padding: 0; text-align: left; text-decoration: underline;">View in browser.</a>
-                            										</p-->		
-                            									</td>
-                            								</tr>
-                            							</table>
-                            						</td>
-                            					</tr>
-                        					</table>
-                            			</td>
-                            		</tr>
-                            	</table>
+                                                                    </p-->      
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
 
-                 <table width="100%" cellpadding="0" cellspacing="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 1000px; padding-bottom: 0px;" >
-                            <tr>
-                              <td class="preheader" style="font-family: 'Arial Narrow', Arial, Helvetica, sans-serif; font-size:10px; line-height:15px; color:#052afa; text-align:center; valign="middle">       
-                 <div align="center" style="text-align: center;"><a href="https://christinecc2020.github.io/trial20/" target="_blank";  style="color:#052afa"; style="font-size:10px";><u>View Web Version for Best Experience</u></a></div>                           	
-                              </td>
-                            </tr>
-                          </table></body>
+<div class="container">
+    <header class="header">
+        <h1>Stay Home, Stay Safe: <br> 12 Ideas to Inject Fun While At Home</h1>
+        <h2>Match the Boxes to Find Out!</h2>
+    </header>
+
+
+
 <!-- Heading -->
-
-
-<body onload="init();" style="margin:0px;">
                                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 620px; padding-bottom: 20px;">
                                     <tr>
-                                    	<td style="border-collapse: collapse;">
-    <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1024px; height:768px">
-        <canvas id="canvas" width="1024" height="768" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-        <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1024px; height:768px; position: absolute; left: 0px; top: 0px; display: block;">
-        </div>
-    </div>
-                                    	</td>
-                                    </tr>
-                                </table>
+                                        <td style="border-collapse: collapse;">
+<div id="memory_board"></div>
+<script>newBoard();</script>
 
-
-                                <!-- Email Body -->
-                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-collapse: separate; max-width: 1000px; padding-left: 20px; padding-right: 20px;">
-                                    <tr>
-                                        <td align="center" style="border-collapse: collapse;">
-                                            <!--[if (gte mso 9)|(IE)]>
-                                            <table width="392" align="center" cellpadding="0" cellspacing="0" border="0">
-                                            <tr>
-                                            <td>
-                                            <![endif]-->
-                                           
-
-
-
-
-			       <!-- Body copy -->
-			       <table max-width="1000" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate;">				
-			       <tr>
-			       <td valign="top" style="border-collapse: collapse;">
-			       <p style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin-left: 20px; padding: 0; text-align: left; text-decoration: none;">Dear <span style="-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; color: #333333; font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; line-height: 24px; margin: 0; padding: 0; text-align: left; text-decoration: none;">Colleagues from Convergence Concepts</span>,
-			                            								<br>
-			                            								<br>
-				I hope everyone is doing well in this Circuit Breaker Period. Let's do our best and help Convergence Concepts to emerge as a brand new agency by the end of this Covid-19. We can do it!
-						</p>
-			                     </td>
-			               </tr>
-			       </table>
-<br>
-<br>
-<br>
-
-                                            <!--[if (gte mso 9)|(IE)]>
-                                            </td>
-                                            </tr>
-                                            </table>
-                                            <![endif]-->
                                         </td>
                                     </tr>
                                 </table>
 
-                               
-                            </td>
-                        </tr>
-                    </table>
-                    <!--[if (gte mso 9)|(IE)]>
-                    </td>
-                    </tr>
-                    </table>
-                    <![endif]-->
-                </td>
-            </tr>
-            <tr>
-              
 
-                                           
-                                        </td>
-                                    </tr>
-                                </table>   
-                            </td>
-                        </tr>
-                    </table>
-                    <!--[if (gte mso 9)|(IE)]>
-                    </td>
-                    </tr>
-                    </table>
-                    <![endif]--> 
-                </td>
-            </tr>
-        </table>
-        
+                         
     </center>
 </body>
 </html>
+</head>
