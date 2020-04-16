@@ -43,18 +43,15 @@ function memoryFlipTile(tile,val){
                 memory_tile_ids = [];
                 // Check to see if the whole board is cleared
                 if(tiles_flipped == memory_array.length){
-                    alert("Congratulations, you had just uncover the secret to Convergence Concepts.");
-                    document.getElementById('memory_board').innerHTML = "";
-                    newBoard();
                 }
             } else {
                 function flip2Back(){
                     // Flip the 2 tiles back over
                     var tile_1 = document.getElementById(memory_tile_ids[0]);
                     var tile_2 = document.getElementById(memory_tile_ids[1]);
-                    tile_1.style.background = 'url(https://github.com/christinecc2020/trial20/blob/gh-pages/image/blank%20template.png?raw=true';
+                    tile_1.style.background = 'url(https://github.com/christinecc2020/trial20/blob/gh-pages/image/blank%20template.png?raw=true) center';
                     tile_1.innerHTML = "";
-                    tile_2.style.background = 'url(https://github.com/christinecc2020/trial20/blob/gh-pages/image/blank%20template.png?raw=true) no-repeat';
+                    tile_2.style.background = 'url(https://github.com/christinecc2020/trial20/blob/gh-pages/image/blank%20template.png?raw=true) center';
                     tile_2.innerHTML = "";
                     // Clear both arrays
                     memory_values = [];
