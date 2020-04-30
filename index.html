@@ -22,13 +22,13 @@ function newBoard(){
     tiles_flipped = 0;
     var output = '';
     memory_array.memory_tile_shuffle();
-    for(var i = 0; i < memory_array.length; i++){
+    for(var i = 0; i <memory_array.length; i++){
         output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_array[i]+'\')"></div>';
     }
     document.getElementById('memory_board').innerHTML = output;
 }
 function memoryFlipTile(tile,val){
-    if(tile.innerHTML == '' && memory_values.length < 2){
+    if(tile.innerHTML == '' && memory_values.length <2){
         tile.style.background = "";
         tile.innerHTML = "<img src='image/" + val +  ".png'>";
         if(memory_values.length == 0){
@@ -260,18 +260,8 @@ div#memory_board > div{
 
 
 </head>
-<body onload="init();" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="#ebecec" style="-webkit-text-size-adjust: none; background-color: #ebecec; margin: 0; padding: 0; width: 100% !important;">
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="#ebecec" style="-webkit-text-size-adjust: none; background-color: #ebecec; margin: 0; padding: 0; width: 100% !important;">
     <center>
-
-<div class="container">
-<img src="https://github.com/christinecc2020/trial20/blob/gh-pages/image/STAY%20HOME.png?raw=true">
-    </header>
-    <br>
-
-
-
-
-
 <!-- Heading -->
                                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: ; border-collapse: separate; max-width: 620px; padding-top: 0px;">
                                     <tr>
